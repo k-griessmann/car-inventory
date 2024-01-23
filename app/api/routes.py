@@ -35,22 +35,10 @@ def get_coar(current_user_token):
     response = cars_schema.dump(car)
     return jsonify(response)
 
-# @api.route('/contacts/<id>', methods = ['GET'])
-# @token_required
-# def get_single_contact(current_user_token, id)
-#     fan = current_user_token.token
-#     if fan:
-#         contact = Contact.query.get(id)
-#         response = contact_schema.dump(contact)
-#         return jsonify(response)
-#     else:
-#         return jsonify({'message': 'Valid Token Required'}), 401
-
-# Update endpoint
 @api.route('/cars/<id>', methods = ['POST', 'PUT'])
 @token_required
 def update_contact(current_user_token, id):
-    car = Car.query.get(id) # get contact by id
+    car = Car.query.get(id) # get car by id
     car.make = request.json['make']
     car.model = request.json['model']
     car.year = request.json['year']
